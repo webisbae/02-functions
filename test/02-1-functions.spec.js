@@ -8,7 +8,7 @@ describe("formatTime function", () => {
   });
 });
 
-describe("formatTime function", () => {
+describe("countUp function", () => {
   it("should count up to the specified number of seconds and log each second", (done) => {
     spyOn(console, "log");
     countUpTo(3);

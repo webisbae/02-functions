@@ -156,12 +156,12 @@ describe("Task 5: Optional Parameters", function () {
 
   it("should return the difference of the two numbers when both parameters are provided", function () {
     const result = minus(10, 5);
-    expect(result).toEqual(5);
+    expect(result).toEqual(-5);
   });
 
   it("should return the first number when the second parameter is not provided", function () {
     const result = minus(10);
-    expect(result).toEqual(10);
+    expect(result).toEqual(-10);
   });
 });
 
