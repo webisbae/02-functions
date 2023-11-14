@@ -55,5 +55,11 @@ module.exports = function (config) {
     // Concurrency level
     // how many browser instances should be started simultaneously
     concurrency: Infinity,
+
+    client: {
+      jasmine: {
+        random: false,
+      },
+    },
   });
 };

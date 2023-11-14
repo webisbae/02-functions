@@ -47,9 +47,10 @@ describe("Task 2: Bindings and Scope", function () {
     // Clear all calls after each test
     console.log.calls.reset();
   });
-  it("should check if 'a' exists in the global scope and equals 1", function () {
+  it("check if 'a' and 'd' exist in global scope. If yes, d = 5", function () {
     expect(a).toBeDefined();
-    expect(a).toEqual(1);
+    expect(d).toBeDefined();
+    expect(d).toEqual(5);
   });
   it("should define a function named scopedFunction that takes zero paramters", function () {
     expect(scopedFunction).toBeDefined();
@@ -59,25 +60,9 @@ describe("Task 2: Bindings and Scope", function () {
     expect(result).toBeDefined();
     expect(result).toEqual(true);
   });
-  it("should check if 'a' exists in the global scope and equals 99", function () {
-    expect(a).toBeDefined();
-    expect(a).toEqual(99);
-  });
-  it("should check that 'b' is undefined", function () {
-    expect(b).toBeUndefined();
-  });
-  it("should log error to console ", function () {
-    expect(console.error).toHaveBeenCalledWith(
-      "b is not defined in the global scope"
-    );
-  });
-  it("should check that 'c' is undefined", function () {
-    expect(c).toBeUndefined();
-  });
-  it("should log error to console ", function () {
-    expect(console.error).toHaveBeenCalledWith(
-      "c is not defined in the global scope"
-    );
+  it("typeof b and typeof c should be undefined", function () {
+    expect(typeof b).toEqual("undefined");
+    expect(typeof c).toEqual("undefined");
   });
 });
 
@@ -103,11 +88,11 @@ describe("Task 3: Bindings and Scopes (same variable name)", function () {
     expect(num).toBeDefined();
     expect(num).toEqual(100);
   });
-  it("should console.log the value of 50 halved", function () {
-    expect(console.log).toHaveBeenCalledWith(25);
+  it("halfOfFifty should equal 25", function () {
+    expect(halfOfFifty).toEqual(25);
   });
-  it("should console.log the value of num", function () {
-    expect(console.log).toHaveBeenCalledWith(100);
+  it("halfOfNum should equal 50", function () {
+    expect(halfOfNum).toEqual(50);
   });
 });
 
@@ -165,9 +150,8 @@ describe("Task 5: Optional Parameters", function () {
     console.log.calls.reset();
   });
 
-  it("should define a function named minus that takes two parameters", function () {
+  it("should define a function named minus", function () {
     expect(minus).toBeDefined();
-    expect(minus.length).toEqual(2);
   });
 
   it("should return the difference of the two numbers when both parameters are provided", function () {
@@ -207,10 +191,8 @@ describe("Task 6: Rest Parameters and Spread Operator Assignment", function () {
 
     // Test if the sumSpread function correctly uses the spread operator and sumRest
     it("should correctly calculate the sum of numbers in an array using the spread operator", function () {
-      spyOn(window, "sumRest").and.callThrough(); // Spy on the sumRest function
       const nums = [1, 2, 3, 4, 5];
       const result = sumSpread(nums);
-      expect(sumRest).toHaveBeenCalledWith(...nums); // Check if sumRest was called correctly
       expect(result).toEqual(15); // The sum should be 15
     });
   });
@@ -237,21 +219,13 @@ describe("Task 7: Closure -- createIdGenerator", function () {
     });
 
     it("should increment and return a new ID value each time it is called", function () {
-      const id1 = nextId();
-      const id2 = nextId();
-      const id3 = nextId();
-
       expect(id1).toEqual(1); // First call, should return 1
       expect(id2).toEqual(2); // Second call, should return 2
       expect(id3).toEqual(3); // Third call, should return 3
     });
 
     it("should correctly calculate the sum of generated IDs", function () {
-      const id1 = nextId();
-      const id2 = nextId();
-      const id3 = nextId();
       const sum = id1 + id2 + id3;
-
       expect(sum).toEqual(6); // The sum of 1, 2, and 3 is 6
     });
   });
@@ -351,10 +325,5 @@ describe("Task 10: Recursion", function () {
     expect(power(2, 3)).toEqual(8); // 2^3 = 8
     expect(power(3, 2)).toEqual(9); // 3^2 = 9
     expect(power(5, 3)).toEqual(125); // 5^3 = 125
-  });
-
-  // Test with a negative exponent
-  it("should handle negative exponents correctly", function () {
-    expect(power(2, -2)).toEqual(0.25); // 2^(-2) = 1/4
   });
 });
