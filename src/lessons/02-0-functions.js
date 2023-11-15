@@ -55,7 +55,7 @@ const num = 100;
 const halfOfFifty = halve(50);
 
 // create a variable named halfOfNum and set it to the return value of halve(num)
-halfOfNum = halve(num);
+const halfOfNum = halve(num);
 
 /**
  * Task 4: Complete the breadRecipe function
